@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import React, {useState} from 'react';
+import TodoAdd from './components/TodoAdd';
+import TodoList from './components/TodoList';
 import './App.css';
 
 function App() {
@@ -9,12 +11,7 @@ function App() {
   const [toggleDone, setToggleDone] = useState(false);
   const [todoList, setTodoList] = useState([]);
 
-  const addTodo = ($event) => {
-    $event.preventDefault();
-    const value = $event.target[0].value;
-    if (!value) return; 
-    setTodoList([...todoList, {id: uuidv4(), title: $event.target[0].value, done: false}]);
-  }
+  const addTodo = (value) => setTodoList([...todoList, {id: uuidv4(), title: value, done: false}]);
   const toggleTodo = (todo) => {
     let result = todoList.map(_todo => {
       if (_todo.id === todo.id) {
@@ -25,6 +22,7 @@ function App() {
     setTodoList(result);
   }
   const deleteAllTasks = () => setTodoList([])
+  const getTodoList = () => todoList.filter(todo => toggleDone ? todo.done : !todo.done)
 
 
   return (
@@ -37,25 +35,8 @@ function App() {
         </div>
         
         <div className="todo-container">
-            <div className="add">
-              <form onSubmit={addTodo}>
-                <input type="text"></input>
-                <button type="sumbit"><span>+</span></button>
-              </form>
-            </div>
-            <div className="title">
-            </div>
-            <div className="list">
-              {todoList.filter(todo => toggleDone ? todo.done : !todo.done).map(todo => {
-                  return (
-                    <div key={todo.id} className="row">
-                      <input type="checkbox" checked={todo.done} onChange={() => toggleTodo(todo)}/>
-                      <span>{todo.title}</span>
-                    </div>
-                  )
-                }
-              )}
-            </div>
+            <TodoAdd callback={addTodo} />
+            <TodoList todoList={getTodoList()} toggleTodo={toggleTodo} />
         </div>
         
         <div className="actions">

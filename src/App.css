@@ -53,13 +53,8 @@
   font-size: 19px;
 }
 
-.title {
-  padding-top: 30px;
-  padding-bottom: 15px;
-  color: #4b4b4b;
-}
-
 .list {
+  padding-top: 30px;
   height: 35vh;
   overflow: auto;
 }
