@@ -1,22 +1,24 @@
+import { useState } from "react";
+
 type Props = {
   callback: (todoTitle: string) => void;
 }
 
 function TodoAdd(props: Props) {
+
+  const [input, setInput] = useState("");
+
   const addTodo = ($event: any) => {
     $event.preventDefault();
-    const value = $event.target[0].value;
-    $event.target[0].value = null;
-    if (!value) return;
-    props.callback(value);
+    if (!input) return;
+    props.callback(input);
+    setInput("");
   }
 
   return (
     <div className="add">
-      <form onSubmit={addTodo}>
-        <input type="text"></input>
-        <button type="submit"><span>+</span></button>
-      </form>
+        <input type="text" value={input} onChange={e => setInput(e.target.value)}></input>
+        <button type="submit" onClick={addTodo}><span>+</span></button>
     </div>
   );
 }

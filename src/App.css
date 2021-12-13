@@ -33,12 +33,12 @@
   flex: 1;
 }
 
-.add form {
+.add {
   display: flex;
   height: 40px;
 }
 
-.add form input {
+.add input {
   flex: 1 1;
   border-radius: 3px;
   border: 1px solid #ddd;
@@ -48,7 +48,7 @@
   padding-left: 10px;
 }
 
-.add form button {
+.add button {
   width: 50px;
   font-size: 19px;
 }
