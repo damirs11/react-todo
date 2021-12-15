@@ -1,4 +1,6 @@
+import { IconButton, TextField } from "@mui/material";
 import { useState } from "react";
+import AddIcon from '@mui/icons-material/Add';
 
 type Props = {
   callback: (todoTitle: string) => void;
@@ -17,8 +19,16 @@ function TodoAdd(props: Props) {
 
   return (
     <div className="add">
-        <input type="text" value={input} onChange={e => setInput(e.target.value)}></input>
-        <button type="submit" onClick={addTodo}><span>+</span></button>
+      <TextField
+        className="input"
+        multiline
+        maxRows={4}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <IconButton sx={{width: 55, marginLeft: "5px"}} className="button" onClick={addTodo}>
+        <AddIcon />
+      </IconButton>
     </div>
   );
 }

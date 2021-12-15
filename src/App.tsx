@@ -4,6 +4,7 @@ import { Todo } from './api/Todo';
 import { v4 as uuidv4 } from 'uuid';
 import TodoAdd from './components/TodoAdd';
 import TodoList from './components/TodoList';
+import { Button } from '@mui/material';
 
 function App() {
   const today  = new Date();
@@ -40,10 +41,16 @@ function App() {
         </div>
         
         <div className="actions">
-          <button type="button" onClick={() => setToggleDone(!toggleDone)}>
+          <Button size="small" onClick={() => setToggleDone(!toggleDone)}>
+            <span>{toggleDone ? ("Показать новые") : ("Показать завершенные")}</span>
+          </Button>
+          <Button size="small" onClick={deleteAllTasks}>
+            <span>Очистить все</span>
+          </Button>
+          {/* <button type="button" onClick={() => setToggleDone(!toggleDone)}>
             <span>{toggleDone ? ("Показать новые") : ("Показать завершенные")}</span>
           </button>
-          <button type="button" onClick={deleteAllTasks}><span>Очистить все</span></button>
+          <button type="button" onClick={deleteAllTasks}><span>Очистить все</span></button> */}
         </div>
       </div>
     </div>

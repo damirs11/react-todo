@@ -35,52 +35,10 @@
 
 .add {
   display: flex;
-  height: 40px;
 }
 
-.add input {
+.add > .input {
   flex: 1 1;
-  border-radius: 3px;
-  border: 1px solid #ddd;
-  margin-right: 10px;
-
-  font-size: 15px;
-  padding-left: 10px;
-}
-
-.add button {
-  width: 50px;
-  font-size: 19px;
-}
-
-.list {
-  padding-top: 30px;
-  height: 35vh;
-  overflow: auto;
-}
-
-.list .row:not(:last-child) {
-  margin-bottom: 8px;
-}
-
-.list .row {
-  height: 50px;
-
-  display: flex;
-  align-items: center;
-
-  border-radius: 3px;
-
-  background: #e0e8f5;
-}
-
-.list .row input {
-  margin: 10px;
-  height: 20px;
-  width: 20px;
-}
-
-.list .row span {
 }
 
 .actions {
@@ -92,8 +50,6 @@
 }
 
 .actions button {
-  background: none;
-  border: 0px;
   font-size: 14px;
-  font-weight: bold;
+  color: #535355;
 }
