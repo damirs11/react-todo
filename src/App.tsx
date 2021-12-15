@@ -47,10 +47,6 @@ function App() {
           <Button size="small" onClick={deleteAllTasks}>
             <span>Очистить все</span>
           </Button>
-          {/* <button type="button" onClick={() => setToggleDone(!toggleDone)}>
-            <span>{toggleDone ? ("Показать новые") : ("Показать завершенные")}</span>
-          </button>
-          <button type="button" onClick={deleteAllTasks}><span>Очистить все</span></button> */}
         </div>
       </div>
     </div>
