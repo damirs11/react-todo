@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Todo } from './api/Todo';
 import { v4 as uuidv4 } from 'uuid';
 import TodoAdd from './components/TodoAdd';
 import TodoList from './components/TodoList';
 import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import LangSelector from './components/LangSelector';
+import DateNow from './components/DateNow';
 
 function App() {
-  const today  = new Date();
+  const { t } = useTranslation(); 
 
   const [toggleDone, setToggleDone] = useState(false);
   const [todoList, setTodoList] = useState([] as Todo[]);
@@ -25,16 +28,15 @@ function App() {
   const deleteAllTasks = () => setTodoList([])
   const getTodoList = () => todoList.filter(todo => toggleDone ? todo.done : !todo.done)
 
-
   return (
     <div className="App">
       <div className="container">
-        <div className="time">
-          {today.toLocaleDateString("ru-RU", {weekday: 'long'})}
-          <br/>
-          {today.toLocaleDateString("ru-RU", {year: 'numeric', month: 'long', day: 'numeric'})}
+        <div className="top">
+          <DateNow />
+
+          <LangSelector/>
         </div>
-        
+
         <div className="todo-container">
             <TodoAdd callback={addTodo} />
             <TodoList todoList={getTodoList()} toggleTodo={toggleTodo} />
@@ -42,10 +44,10 @@ function App() {
         
         <div className="actions">
           <Button size="small" onClick={() => setToggleDone(!toggleDone)}>
-            <span>{toggleDone ? ("Показать новые") : ("Показать завершенные")}</span>
+            <span>{toggleDone ? (t('actions.new')) : (t('actions.done'))}</span>
           </Button>
           <Button size="small" onClick={deleteAllTasks}>
-            <span>Очистить все</span>
+            <span>{t('actions.clean')}</span>
           </Button>
         </div>
       </div>

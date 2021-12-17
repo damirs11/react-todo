@@ -22,10 +22,26 @@
   border-radius: 5px;
 }
 
-.time {
+.top {
+  display: flex;
+  align-items: end;
   padding: 55px 25px 0px 25px;
+}
+
+.top .time {
+  flex: 1;
   font-size: 18px;
   color: #f65e67;
+}
+
+.top .lang > * {
+  font-size: 16px;
+  color: #535355;
+}
+
+.menu-item {
+  font-size: 16px;
+  color: #535355;
 }
 
 .todo-container {

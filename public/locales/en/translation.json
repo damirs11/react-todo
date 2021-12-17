@@ -1,0 +1,8 @@
+{
+    "actions": {
+        "clean": "clean",
+        "new": "new",
+        "done": "done"
+    },
+    "date": "Today is {{date, DATE_HUGE}}"
+}
